@@ -34,18 +34,30 @@ docker run --network="webrecommend_iii_net" \
 ```
 
 
-## check db run using DBeaver
-driver choose：ODBC
+## check longDB's status using DBeaver
+  * driver choose：ODBC
+  * advance setting
+    * Class Name: com.splicemachine.db.jdbc.ClientDriver
+    * URL Template: jdbc:splice://_*HostIP*_:1527/splicedb
+    * Description:longdb
+    * Port: 1527
+    * db driver download URL: http://repository.splicemachine.com/nexus/content/groups/public/com/splicemachine/db-client/2.7.0.1815/db-client-2.7.0.1815.jar
+  * default user/password
+    * splice/admin
+    
+    
+## How to use LongDB
+### LongDB is base on SparkSQL
+#### official document: https://doc.splicemachine.com/
+```sql
+-- insert data
+INSERT INTO 'db'.'table'('colnames1', 'colnames2', ...)VALUES('value1', 'value2', ...); 
 
-### advance setting
+-- update data
+UPDATE 'db'.'table' SET 'colname'='value' WHERE 'colname'='value';
 
-  * Class Name: com.splicemachine.db.jdbc.ClientDriver
-  * URL Template: jdbc:splice://_*HostIP*_:1527/splicedb
-  * Description:longdb
-  * Port: 1527
-  * db driver download URL: http://repository.splicemachine.com/nexus/content/groups/public/com/splicemachine/db-client/2.7.0.1815/db-client-2.7.0.1815.jar
+-- delete data
+DELETE FROM 'db'.'table' WHERE 'colname'='value';
 ```
-### user/password
-splice/admin
-```
+
 
