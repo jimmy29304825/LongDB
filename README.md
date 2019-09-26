@@ -1,9 +1,9 @@
 # longDB setup tutorial
 ## download and install
-'''python
+```python
 print('aaa')
 print('aaa')
 print('aaa')
 print('aaa')
 print('aaa')
-'''
+```
