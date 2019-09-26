@@ -83,6 +83,24 @@ cd splice_odbc_linux64-2.7.62.0; ./install.sh
 # edit odbc.ini file 
 # change URL = 172.28.0.2
 nano ~/odbc.ini
+```
 
+```ipnbpython
+import pyodbc
+# connect to LongDB
+cnxn=pyodbc.connect("DSN=SpliceODBC64")
 
+# call sql command
+cursor=cnxn.cursor()
+
+# run sql command
+cursor.execute("select * from sys.systables")
+
+# get one row out
+row=cursor.fetchone()
+print('row:',row)
+
+# get all row out
+row=cursor.fetchall()
+print('row:',row)
 ```
