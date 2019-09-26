@@ -49,15 +49,19 @@ docker run --network="webrecommend_iii_net" \
 ## How to use LongDB
 ### LongDB is base on SparkSQL
 #### official document: https://doc.splicemachine.com/
+##### OLTP sample
 ```sql
--- insert data
-INSERT INTO 'db'.'table'('colnames1', 'colnames2', ...)VALUES('value1', 'value2', ...); 
+-- insert
+INSERT INTO `db`.`table`(`col_names1`, `col_names2`, ...)VALUES(`value1`, `value2`, ...); 
 
--- update data
-UPDATE 'db'.'table' SET 'colname'='value' WHERE 'colname'='value';
+-- update
+UPDATE `db`.`table` SET `col_name`=`value` WHERE `col_name`=`value`;
 
--- delete data
-DELETE FROM 'db'.'table' WHERE 'colname'='value';
+-- delete
+DELETE FROM `db`.`table` WHERE `col_name`=`value`;
 ```
-
+##### OLAP sample
+```sql
+select * from `db`.`table`
+```
 
