@@ -65,3 +65,24 @@ DELETE FROM `db`.`table` WHERE `col_name`=`value`;
 select * from `db`.`table`
 ```
 
+
+## jupyter notebook connect LongDB
+```sh
+# enter to jupyter's container
+sudo docker exec -it jupyter bash
+
+# download package
+cd /tmp; wget https://splice-releases.s3.amazonaws.com/odbcdriver/Linux64/splice_odbc_linux64-2.7.62.0.tar.gz
+
+# untar file
+tar -zxvf splice_odbc_linux64-2.7.62.0.tar.gz
+
+# install package
+cd splice_odbc_linux64-2.7.62.0; ./install.sh
+
+# edit odbc.ini file 
+# change URL = 172.28.0.2
+nano ~/odbc.ini
+
+
+```
