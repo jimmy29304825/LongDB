@@ -1,15 +1,15 @@
 # longDB setup tutorial
 ## download and install
-```text
-環境需求：
-    OS：CentOS7
-    CPU： 4 Cores
-    RAM：26 GB
-software：
-    git
-    docker 
-    docker-compose
-```
+
+* 環境需求：
+  * OS：CentOS7
+  * CPU： 4 Cores
+  * RAM：26 GB
+* software required：
+  * git
+  * docker 
+  * docker-compose
+
 ```bash
 #download hadoop and jupyter's images
 cd /tmp; git clone https://github.com/orozcohsu/webRecommend.git
@@ -38,14 +38,14 @@ docker run --network="webrecommend_iii_net" \
 driver choose：ODBC
 
 ### advance setting
-```text
-Class Name: com.splicemachine.db.jdbc.ClientDriver
-URL Template: jdbc:splice://_*HostIP*_:1527/splicedb
-Description:longdb
-Port: 1527
-db driver download URL: 
-http://repository.splicemachine.com/nexus/content/groups/public/com/splicemachine/db-client/2.7.0.1815/db-client-2.7.0.1815.jar
+
+  * Class Name: com.splicemachine.db.jdbc.ClientDriver
+  * URL Template: jdbc:splice://_*HostIP*_:1527/splicedb
+  * Description:longdb
+  * Port: 1527
+  * db driver download URL: http://repository.splicemachine.com/nexus/content/groups/public/com/splicemachine/db-client/2.7.0.1815/db-client-2.7.0.1815.jar
 ```
 ### user/password
 splice/admin
 ```
+
