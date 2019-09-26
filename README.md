@@ -33,18 +33,19 @@ docker run --network="webrecommend_iii_net" \
 ./stop-longdb.sh 
 ```
 
-```text
-# check db run using DBeaver
+
+## check db run using DBeaver
 driver choose：ODBC
 
-# advance setting
+### advance setting
+```text
 Class Name: com.splicemachine.db.jdbc.ClientDriver
 URL Template: jdbc:splice://_*HostIP*_:1527/splicedb
 Description:longdb
 Port: 1527
 db driver download URL: 
 http://repository.splicemachine.com/nexus/content/groups/public/com/splicemachine/db-client/2.7.0.1815/db-client-2.7.0.1815.jar
-
-# user/password
+```
+### user/password
 splice/admin
 ```
