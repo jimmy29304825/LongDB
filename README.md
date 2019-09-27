@@ -67,6 +67,7 @@ select * from `db`.`table`
 
 
 ## jupyter notebook connect LongDB
+* using ODBC package
 ```sh
 # enter to jupyter's container
 sudo docker exec -it jupyter bash
@@ -103,4 +104,38 @@ print('row:',row)
 # get all row out
 row=cursor.fetchall()
 print('row:',row)
+```
+
+## Import data from hadoop
+* using sqoop
+  * sqoop is a tool which can import data, export data between hadoop hdfs and database
+```bash
+# enter into hadoop container and clone git
+sudo docker exec -it hadoop bash
+cd /tmp; git clone https://github.com/orozcohsu/webRecommend.git
+
+# copy file to sqoop's path
+cp /tmp/webRecommend/db-client-2.7.0.1815.jar /usr/local/sqoop/lib/
+
+# Database -> Hadoop
+sqoop import --connect jdbc:splice://172.28.0.2:1527/splicedb \
+--username splice --password admin \
+--driver com.splicemachine.db.jdbc.ClientDriver \
+--query "SELECT [col_names] FROM `db`.`table` where 1=1 and \$CONDITIONS" \
+-target-dir $PATH_IN_HADOOP -m1
+
+# check data
+# by command
+hadoop fs -ls /user/hdfs/data/weblog
+# or visit http://HostIP:50070
+
+# Hadoop -> Database
+sqoop export --connect jdbc:splice://172.28.0.2:1527/splicedb \
+--username splice --password admin \
+--driver com.splicemachine.db.jdbc.ClientDriver 
+--export-dir $DATA_PATH_IN_HADOOP \
+--table `db`.`table` \
+--input-fields-terminated-by "," --columns "[col_names]"
+
+
 ```
