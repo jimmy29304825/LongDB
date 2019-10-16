@@ -72,7 +72,7 @@ select * from `db`.`table`
 sudo docker exec -it jupyter bash
 
 # Download ODBC package
-cd /tmp; wget https://splice-releases.s3.amazonaws.com/odbcdriver/Linux64/splice_odbc_linux64-2.7.62.0.tar.gz
+cd /tmp; wget https://splice-releases.s3.amazonaws.com/odbc-driver/Linux64/splice_odbc_linux64-2.7.62.0.tar.gz
 
 # Untar file
 tar -zxvf splice_odbc_linux64-2.7.62.0.tar.gz
