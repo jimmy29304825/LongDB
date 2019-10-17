@@ -82,7 +82,7 @@ cd splice_odbc_linux64-2.7.62.0; ./install.sh
 
 # Edit odbc.ini file 
 # change URL = 172.28.0.2
-nano ~/odbc.ini
+nano ./odbc.ini
 ```
 
 ```ipnbpython
