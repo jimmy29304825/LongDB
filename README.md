@@ -3,7 +3,7 @@
 * 環境需求：
   * OS：CentOS7
   * CPU： 4 Cores
-  * RAM：26 GB
+  * RAM：16 GB
 * Software Required：
   * git
   * docker 
@@ -13,7 +13,7 @@
 # Download hadoop and jupyter's images
 cd /tmp; git clone https://github.com/orozcohsu/webRecommend.git
 
-# Start containers
+# Start hadoop and jupyter's containers
 cd /tmp/webRecommend/; docker-compose up -d
 
 # Check containers' status
