@@ -27,6 +27,14 @@ docker run --network="webrecommend_iii_net" \
 -p 8090:8090 -p 8091:8091 -p 4041:4041 -p 8081:8081 \
 -p 8082:8082 longdb/longdb:v1.1.1
 
+# single
+docker run -it \
+--sysctl net.ipv6.conf.all.disable_ipv6=1 \
+--expose 1527 --name longdb --hostname localhost \
+-p 1527:1527 -p 4040:4040 -p 7078:7078 -p 8080:8080 \
+-p 8090:8090 -p 8091:8091 -p 4041:4041 -p 8081:8081 \
+-p 8082:8082 longdb/longdb:v1.1.1
+
 # Start/Stop service(in container's command)
 ./start-longdb.sh 
 ./stop-longdb.sh 
