@@ -1,4 +1,41 @@
 # LongDB setup tutorial
+## LongDB onlly
+* 環境需求：
+  * OS：CentOS7
+  * CPU： 4 Cores
+  * RAM：16 GB
+* Software Required：
+  * git
+  * docker 
+  * docker-compose
+
+```bash
+docker run -it \
+--sysctl net.ipv6.conf.all.disable_ipv6=1 \
+--expose 1527 --name longdb --hostname localhost \
+-p 1527:1527 -p 4040:4040 -p 7078:7078 -p 8080:8080 \
+-p 8090:8090 -p 8091:8091 -p 4041:4041 -p 8081:8081 \
+-p 8082:8082 longdb/longdb:v1.1.1
+
+# Start/Stop service(in container's command)
+./start-longdb.sh 
+./stop-longdb.sh 
+```
+### Connect LongDB using DBeaver
+* Download URL: https://dbeaver.io/
+* Driver choose：ODBC
+* Advance setting
+  * Class Name: com.splicemachine.db.jdbc.ClientDriver
+  * URL Template: jdbc:splice://_*HostIP*_:1527/splicedb
+  * Description:longdb
+  * Port: 1527
+  * DB driver download URL: http://repository.splicemachine.com/nexus/content/groups/public/com/splicemachine/db-client/2.7.0.1815/db-client-2.7.0.1845.jar
+* Default user/password
+  * splice/admin
+
+
+
+
 ## Download and Install
 * 環境需求：
   * OS：CentOS7
@@ -8,6 +45,7 @@
   * git
   * docker 
   * docker-compose
+
 
 ```bash
 # Download hadoop and jupyter's images
@@ -41,7 +79,7 @@ docker run -it \
 ```
 
 
-## Connect LongDB using DBeaver
+### Connect LongDB using DBeaver
 * Download URL: https://dbeaver.io/
 * Driver choose：ODBC
 * Advance setting
@@ -54,10 +92,10 @@ docker run -it \
   * splice/admin
     
     
-## How to use LongDB
-### LongDB is base on SparkSQL
-#### Official document: https://doc.splicemachine.com/
-##### OLTP sample
+### How to use LongDB
+#### LongDB is base on SparkSQL
+##### Official document: https://doc.splicemachine.com/
+###### OLTP sample
 ```sql
 -- insert
 INSERT INTO `db`.`table`(`col_names1`, `col_names2`, ...)VALUES(`value1`, `value2`, ...); 
@@ -68,13 +106,13 @@ UPDATE `db`.`table` SET `col_name`=`value` WHERE `col_name`=`value`;
 -- delete
 DELETE FROM `db`.`table` WHERE `col_name`=`value`;
 ```
-##### OLAP sample
+###### OLAP sample
 ```sql
 select * from `db`.`table`
 ```
 
 
-## Jupyter Notebook connect LongDB(using ODBC package)
+### Jupyter Notebook connect LongDB(using ODBC package)
 ```sh
 # Enter to jupyter's container
 sudo docker exec -it jupyter bash
@@ -113,7 +151,7 @@ row=cursor.fetchall()
 print('row:',row)
 ```
 
-## Sqoop
+### Sqoop
 * Sqoop is a tool which can import data, export data between hadoop hdfs and database
 ```bash
 # Enter into hadoop container and clone git
@@ -146,7 +184,7 @@ sqoop export --connect jdbc:splice://172.28.0.2:1527/splicedb \
 # Then you can check data on DBeaver...
 ```
 
-## Mahout
+### Mahout
 * due to the mahout version in the image we use is too old, we have to download another version
 ```sh
 # Enter into hadoop container
