@@ -191,7 +191,7 @@ sqoop export --connect jdbc:splice://172.28.0.2:1527/splicedb \
 sudo docker exec -it hadoop bash
 
 # Download and untar
-cd /tmp; wget https://archive.apache.org/dist/mahout/0.10.1/apachemahout-distribution-0.10.1.tar.gz
+cd /tmp; wget https://archive.apache.org/dist/mahout/0.10.1/apache-mahout-distribution-0.10.1.tar.gz
 tar -zxvf apache-mahout-distribution-0.10.1.tar.gz
 
 # Go to mahout's path and run
